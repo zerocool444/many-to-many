@@ -5,7 +5,7 @@ from django.db import models
 class Element(models.Model):
     name = models.CharField(max_length=255)
     #parent = models.ForeignKey("self", null=True)
-    elements_connected = models.ManyToManyField("self", blank=True)
+    parents = models.ManyToManyField("self", blank=True, symmetrical=False)
 
     def __str__(self):
         return self.name
